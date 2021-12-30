@@ -1,122 +1,84 @@
-#include <bits/stdc++.h>
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
 
-using namespace std;
+class Result {
 
-string ltrim(const string &);
-string rtrim(const string &);
-vector<string> split(const string &);
+    /*
+     * Complete the 'countApplesAndOranges' function below.
+     *
+     * The function accepts following parameters:
+     *  1. INTEGER s
+     *  2. INTEGER t
+     *  3. INTEGER a
+     *  4. INTEGER b
+     *  5. INTEGER_ARRAY apples
+     *  6. INTEGER_ARRAY oranges
+     */
 
-/*
- * Complete the 'countApplesAndOranges' function below.
- *
- * The function accepts following parameters:
- *  1. INTEGER s
- *  2. INTEGER t
- *  3. INTEGER a
- *  4. INTEGER b
- *  5. INTEGER_ARRAY apples
- *  6. INTEGER_ARRAY oranges
- */
+    public static void countApplesAndOranges(int s, int t, int a, int b, List<Integer> apples, List<Integer> oranges) {
+    // Write your code here
+    
+    int fallapples = 0;
+    int falloranges = 0;
+    
+    for(int i = 0; i<apples.size(); i++){
+        if((a + apples.get(i)) >= s && (a + apples.get(i)) <= t ){
+            fallapples++;
+        }
+    }
+    for(int i = 0; i<oranges.size(); i++){
+        if((b + oranges.get(i)) >= s && (b + oranges.get(i)) <= t ){
+            falloranges++;
+        }
+    }
+    
+    System.out.println(fallapples + "\n" + falloranges);
 
-void countApplesAndOranges(int s, int t, int a, int b, vector<int> apples, vector<int> oranges) {
-
-}
-
-int main()
-{
-    string first_multiple_input_temp;
-    getline(cin, first_multiple_input_temp);
-
-    vector<string> first_multiple_input = split(rtrim(first_multiple_input_temp));
-
-    int s = stoi(first_multiple_input[0]);
-
-    int t = stoi(first_multiple_input[1]);
-
-    string second_multiple_input_temp;
-    getline(cin, second_multiple_input_temp);
-
-    vector<string> second_multiple_input = split(rtrim(second_multiple_input_temp));
-
-    int a = stoi(second_multiple_input[0]);
-
-    int b = stoi(second_multiple_input[1]);
-
-    string third_multiple_input_temp;
-    getline(cin, third_multiple_input_temp);
-
-    vector<string> third_multiple_input = split(rtrim(third_multiple_input_temp));
-
-    int m = stoi(third_multiple_input[0]);
-
-    int n = stoi(third_multiple_input[1]);
-
-    string apples_temp_temp;
-    getline(cin, apples_temp_temp);
-
-    vector<string> apples_temp = split(rtrim(apples_temp_temp));
-
-    vector<int> apples(m);
-
-    for (int i = 0; i < m; i++) {
-        int apples_item = stoi(apples_temp[i]);
-
-        apples[i] = apples_item;
     }
 
-    string oranges_temp_temp;
-    getline(cin, oranges_temp_temp);
+}
 
-    vector<string> oranges_temp = split(rtrim(oranges_temp_temp));
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 
-    vector<int> oranges(n);
+        String[] firstMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
 
-    for (int i = 0; i < n; i++) {
-        int oranges_item = stoi(oranges_temp[i]);
+        int s = Integer.parseInt(firstMultipleInput[0]);
 
-        oranges[i] = oranges_item;
+        int t = Integer.parseInt(firstMultipleInput[1]);
+
+        String[] secondMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+        int a = Integer.parseInt(secondMultipleInput[0]);
+
+        int b = Integer.parseInt(secondMultipleInput[1]);
+
+        String[] thirdMultipleInput = bufferedReader.readLine().replaceAll("\\s+$", "").split(" ");
+
+        int m = Integer.parseInt(thirdMultipleInput[0]);
+
+        int n = Integer.parseInt(thirdMultipleInput[1]);
+
+        List<Integer> apples = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+            .map(Integer::parseInt)
+            .collect(toList());
+
+        List<Integer> oranges = Stream.of(bufferedReader.readLine().replaceAll("\\s+$", "").split(" "))
+            .map(Integer::parseInt)
+            .collect(toList());
+
+        Result.countApplesAndOranges(s, t, a, b, apples, oranges);
+
+        bufferedReader.close();
     }
-
-    countApplesAndOranges(s, t, a, b, apples, oranges);
-
-    return 0;
-}
-
-string ltrim(const string &str) {
-    string s(str);
-
-    s.erase(
-        s.begin(),
-        find_if(s.begin(), s.end(), not1(ptr_fun<int, int>(isspace)))
-    );
-
-    return s;
-}
-
-string rtrim(const string &str) {
-    string s(str);
-
-    s.erase(
-        find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(),
-        s.end()
-    );
-
-    return s;
-}
-
-vector<string> split(const string &str) {
-    vector<string> tokens;
-
-    string::size_type start = 0;
-    string::size_type end = 0;
-
-    while ((end = str.find(" ", start)) != string::npos) {
-        tokens.push_back(str.substr(start, end - start));
-
-        start = end + 1;
-    }
-
-    tokens.push_back(str.substr(start));
-
-    return tokens;
 }
