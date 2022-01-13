@@ -19,3 +19,5 @@ SNo | Name |
 4 | [Breaking-Best-And-Worst-Records](https://github.com/anshgoyalevil/solution-set-hr/blob/main/breaking-best-and-worst-records.java)  	
 5 | [CamelCase](https://github.com/anshgoyalevil/solution-set-hr/blob/main/camelcase.java)
 6 | [Cat-And-Mouse](https://github.com/anshgoyalevil/solution-set-hr/blob/main/cats-and-a-mouse.java)
+7 | [Correctness-Invariant](https://github.com/anshgoyalevil/solution-set-hr/blob/main/correctness-invariant.java)
+8 | [Designer-PDF-Viewer](https://github.com/anshgoyalevil/solution-set-hr/blob/main/designer-pdf-viewer.java)
